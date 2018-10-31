@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@opuscapita/react-searchbar": "^1.0.6",
+    "material-ui-search-bar": "^0.4.2",
     "react": "^16.5.2",
+    "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.5",
+    "styled-components": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
