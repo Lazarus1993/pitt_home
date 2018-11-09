@@ -1,7 +1,46 @@
 .App {
   text-align: center;
 }
-
+.fa-stack[data-count]:after {
+  position: absolute;
+  right: 0%;
+  top: 1%;
+  content: attr(data-count);
+  font-size: 30%;
+  padding: 0.6em;
+  border-radius: 999px;
+  line-height: 0.75em;
+  color: white;
+  background: rgba(255, 0, 0, 0.85);
+  text-align: center;
+  min-width: 2em;
+  font-weight: bold;
+}
+.landing {
+  position: relative;
+  background: url("./images/ThePantherPitt.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+.nextclass {
+  display: flex;
+}
+.calendar {
+  background-color: white;
+  border-radius: 10%;
+  padding: 8px;
+  margin-right: 40px;
+}
+.day {
+  color: red;
+}
+.date {
+  color: black;
+  font-size: 30px;
+}
 .wip {
   position: absolute;
   width: 150px;
