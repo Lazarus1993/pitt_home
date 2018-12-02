@@ -1,29 +1,37 @@
 import React, { Component } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import SearchBar from "@opuscapita/react-searchbar";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import SearchBar from "material-ui-search-bar";
 import logo from "../../images/Logo.jpg";
 import profile from "../../images/profile.jpg";
 import Column from "./Column";
 import Row from "./Row";
 import initialData from "../initial-data";
 import styled from "styled-components";
+import Slider from "react-slick";
+import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 
 const Container = styled.div`
   display: flex;
   margin-right: 10px;
 `;
-const Title = styled.h3`
-  padding: 8px;
-`;
 
 class Landing extends Component {
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
     this.state = {
       displayAllApps: false,
       columns: initialData.column,
-      apps: initialData.apps
+      apps: initialData.apps,
+      popoverOpen: false
     };
+  }
+
+  toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    });
   }
 
   onDragEnd = result => {
@@ -89,10 +97,15 @@ class Landing extends Component {
 
   render() {
     let allApps;
-
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     allApps = (
       <div className="allapps">
-        <Title>All Apps</Title>
         <Container>
           <Column
             key={this.state.columns["column-1"].id}
@@ -122,16 +135,16 @@ class Landing extends Component {
     return (
       <div>
         <div
-          class="modal fade"
+          className="modal fade"
           id="exampleModalCenter"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-body">
                 <img
                   className="rounded-circle"
                   src={profile}
@@ -140,11 +153,11 @@ class Landing extends Component {
                 />{" "}
                 asb161@pitt.edu
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary">
                   Pitt Account
                 </button>
-                <button type="button" class="btn btn-danger">
+                <button type="button" className="btn btn-danger">
                   Sign Out
                 </button>
               </div>
@@ -152,6 +165,67 @@ class Landing extends Component {
           </div>
         </div>
         <DragDropContext onDragEnd={this.onDragEnd}>
+          <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+            <div className="container">
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#mobile-nav"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+
+              <div className="collapse navbar-collapse" id="mobile-nav">
+                <ul className="navbar-nav mr-auto">
+                  <li className="nav-item">
+                    <div>
+                      <Button
+                        id="Popover1"
+                        onClick={this.toggle}
+                        color="secondary"
+                      >
+                        <i class="fas fa-th fa-lg" />
+                      </Button>
+                      <Popover
+                        placement="bottom"
+                        isOpen={this.state.popoverOpen}
+                        target="Popover1"
+                      >
+                        <PopoverHeader>All Apps</PopoverHeader>
+                        <PopoverBody>{allApps}</PopoverBody>
+                      </Popover>
+                    </div>
+                  </li>
+                </ul>
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <span className="fa-stack fa-lg has-badge" data-count="90">
+                      <i className="fa fa-circle fa-stack-2x" />
+                      <i className="fa fa-envelope fa-stack-1x fa-inverse" />
+                    </span>
+                  </li>
+
+                  <li className="nav-item">
+                    <button
+                      type="button"
+                      className="btn btn-dark"
+                      data-toggle="modal"
+                      data-target="#exampleModalCenter"
+                    >
+                      <img
+                        className="rounded-circle"
+                        src={profile}
+                        alt={profile}
+                        style={{ width: "40px", marginRight: "5px" }}
+                      />{" "}
+                    </button>
+                  </li>
+                  <li />
+                </ul>
+              </div>
+            </div>
+          </nav>
           <div className="container">
             <div className="row">
               <div className="col">
@@ -163,14 +237,111 @@ class Landing extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col">
-                <div>{allApps}</div>
-              </div>
-              <div className="col">
-                <div className="row">
-                  <SearchBar />
+              <div className="col" id="left">
+                <h4>Up Next</h4>
+                <div>
+                  <h4>Class</h4>
+                  <div className="slider">
+                    <Slider {...settings}>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">Tuesday</div>
+                            <div className="date">1</div>
+                          </div>
+                          <div>
+                            <h5 className="card-title">
+                              Human Information Processing
+                            </h5>
+                            <p className="card-text">6pm-9pm</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">Tuesday</div>
+                            <div className="date">1</div>
+                          </div>
+                          <div>
+                            <h5 className="card-title">
+                              Human Information Processing
+                            </h5>
+                            <p className="card-text">6pm-9pm</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Slider>
+                  </div>
                 </div>
                 <br />
+                <br />
+                <div>
+                  <h4>Assignment Due</h4>
+                  <div>
+                    <Slider {...settings}>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">November</div>
+                            <div className="date">9</div>
+                          </div>
+                          <div>
+                            <h5 className="card-title">Project Proposal</h5>
+                            <p className="card-text">5pm</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">November</div>
+                            <div className="date">16</div>
+                          </div>
+                          <div>
+                            <h5 className="card-title">Project Proposal</h5>
+                            <p className="card-text">5pm</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Slider>
+                  </div>
+                </div>
+                <br />
+                <br />
+                <div>
+                  <h4>Event</h4>
+                  <div>
+                    <Slider {...settings}>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">Thursday</div>
+                            <div className="date">1</div>
+                          </div>
+                          <div className="description">
+                            <h5 className="card-title">Career Fair</h5>
+                            <p className="card-text">6pm-9pm</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="card card-body bg-dark text-white mb-3">
+                        <div className="nextclass">
+                          <div className="calendar">
+                            <div className="day">Thursday</div>
+                            <div className="date">8</div>
+                          </div>
+                          <div className="description">
+                            <h5 className="card-title">Career Fair</h5>
+                            <p className="card-text">6pm-9pm</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Slider>
+                  </div>
+                </div>
+              </div>
+              <div className="col" id="right">
                 <div className="row">
                   <div className="col-sm" />
                   <Row
@@ -182,74 +353,21 @@ class Landing extends Component {
                   />
                   <div className="col-sm" />
                 </div>
-              </div>
-              <div className="col">
-                <span class="fa-stack fa-lg has-badge" data-count="90">
-                  <i class="fa fa-circle fa-stack-2x" />
-                  <i class="fa fa-envelope fa-stack-1x fa-inverse" />
-                </span>
-                <button
-                  type="button"
-                  class="btn"
-                  data-toggle="modal"
-                  data-target="#exampleModalCenter"
-                >
-                  <img
-                    className="rounded-circle"
-                    src={profile}
-                    alt={profile}
-                    style={{ width: "40px", marginRight: "5px" }}
-                  />{" "}
-                </button>
-
-                <h4>Up Next</h4>
-                <div>
-                  <h4>Class</h4>
-                  <div className="card card-body bg-dark text-white mb-3">
-                    <div className="nextclass">
-                      <div className="calendar">
-                        <div className="day">Tuesday</div>
-                        <div className="date">1</div>
-                      </div>
-                      <div>
-                        <h5 className="card-title">
-                          Human Information Processing
-                        </h5>
-                        <p className="card-text">6pm-9pm</p>
-                      </div>
-                    </div>
+                <div className="row">
+                  <div id="search">
+                    <MuiThemeProvider>
+                      <SearchBar
+                        onChange={() => console.log("onChange")}
+                        onRequestSearch={() => console.log("onRequestSearch")}
+                        style={{
+                          margin: "0 auto",
+                          maxWidth: 800
+                        }}
+                      />
+                    </MuiThemeProvider>
                   </div>
                 </div>
-                <div>
-                  <h4>Assignment Due</h4>
-                  <div className="card card-body bg-dark text-white mb-3">
-                    <div className="nextclass">
-                      <div className="calendar">
-                        <div className="day">November</div>
-                        <div className="date">9</div>
-                      </div>
-                      <div>
-                        <h5 className="card-title">Project Proposal</h5>
-                        <p className="card-text">5pm</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4>Event</h4>
-                  <div className="card card-body bg-dark text-white mb-3">
-                    <div className="nextclass">
-                      <div className="calendar">
-                        <div className="day">Thursday</div>
-                        <div className="date">1</div>
-                      </div>
-                      <div className="description">
-                        <h5 className="card-title">Career Fair</h5>
-                        <p className="card-text">6pm-9pm</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <br />
               </div>
             </div>
           </div>
