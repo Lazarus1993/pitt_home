@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+import NotificationBadge from "react-notification-badge";
+import { Effect } from "react-notification-badge";
 const Container = styled.div`
   padding: 8px;
   margin-right: 8px;
@@ -21,13 +23,22 @@ export default class Appl extends Component {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <img
-              className="rounded-circle"
-              src={require("../../images/" + this.props.app.name + ".jpg")}
-              style={{ width: "50px", margin: "auto", display: "block" }}
-              alt="Loading..."
-            />
-            {this.props.app.name}
+            <div>
+              <NotificationBadge count={5} effect={Effect.SCALE} />
+              <img
+                //className="rounded-circle"
+                src={require("../../images/" + this.props.app.name + ".jpg")}
+                style={{
+                  width: "50px",
+                  margin: "auto",
+                  display: "block",
+                  borderRadius: "10px"
+                }}
+                alt="Loading..."
+              />
+
+              {this.props.app.name}
+            </div>
           </Container>
         )}
       </Draggable>

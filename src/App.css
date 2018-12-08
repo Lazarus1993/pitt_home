@@ -16,6 +16,12 @@
   min-width: 2em;
   font-weight: bold;
 }
+h3 {
+  text-align: center;
+}
+h4 {
+  text-align: center;
+}
 #search {
   width: 100%;
 }
@@ -31,13 +37,8 @@
 .upnext {
   display: flex;
 }
-.slide {
-  flex: 1;
-  overflow: hidden;
-}
-.slick-slider {
-  width: 100%;
-  max-width: 400px;
+.card-text {
+  margin-top: -10px;
 }
 #left {
   width: 100%;
@@ -59,6 +60,9 @@
 .nextclass {
   display: flex;
 }
+#Popover1 {
+  background-color: #282c34;
+}
 .calendar {
   background-color: white;
   border-radius: 10%;
@@ -71,6 +75,7 @@
 .date {
   color: black;
   font-size: 30px;
+  text-align: center;
 }
 .wip {
   position: absolute;

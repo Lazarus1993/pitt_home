@@ -23,9 +23,14 @@ export default class Appl extends Component {
             isDragging={snapshot.isDragging}
           >
             <img
-              className="rounded-circle"
+              //className="rounded-circle"
               src={require("../../images/" + this.props.app.name + ".jpg")}
-              style={{ width: "50px", margin: "auto", display: "block" }}
+              style={{
+                width: "50px",
+                margin: "auto",
+                display: "block",
+                borderRadius: "10px"
+              }}
               alt="Loading..."
             />
             {this.props.app.name}
