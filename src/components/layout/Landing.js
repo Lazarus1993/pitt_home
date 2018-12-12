@@ -11,6 +11,7 @@ import initialData from "../initial-data";
 import styled from "styled-components";
 import Slider from "react-slick";
 import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import UpNext from "../upnext/UpNext";
 
 const Container = styled.div`
   display: flex;
@@ -105,7 +106,6 @@ class Landing extends Component {
 
   render() {
     let allApps;
-    let upNext;
     var settings = {
       dots: true,
       infinite: true,
@@ -114,7 +114,6 @@ class Landing extends Component {
       slidesToScroll: 1,
       autoplay: true
     };
-
     allApps = (
       <div className="allapps">
         <Container>
@@ -140,114 +139,6 @@ class Landing extends Component {
             )}
           />
         </Container>
-      </div>
-    );
-
-    upNext = (
-      <div>
-        <div>
-          <div>
-            <h4>Class</h4>
-            <div className="slider">
-              <Slider {...settings}>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">Tuesday</div>
-                      <div className="date">1</div>
-                    </div>
-                    <div>
-                      <h6 className="card-title">
-                        Human Information Processing
-                      </h6>
-                      <p className="card-text">6pm-9pm</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">Tuesday</div>
-                      <div className="date">1</div>
-                    </div>
-                    <div>
-                      <h6 className="card-title">
-                        Human Information Processing
-                      </h6>
-                      <p className="card-text">6pm-9pm</p>
-                    </div>
-                  </div>
-                </div>
-              </Slider>
-            </div>
-          </div>
-          <br />
-          <br />
-          <div>
-            <h4>Assignment Due</h4>
-            <div>
-              <Slider {...settings}>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">November</div>
-                      <div className="date">9</div>
-                    </div>
-                    <div>
-                      <h6 className="card-title">Project Proposal</h6>
-                      <p className="card-text">5pm</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">November</div>
-                      <div className="date">16</div>
-                    </div>
-                    <div>
-                      <h6 className="card-title">Project Proposal</h6>
-                      <p className="card-text">5pm</p>
-                    </div>
-                  </div>
-                </div>
-              </Slider>
-            </div>
-          </div>
-          <br />
-          <br />
-          <div>
-            <h4>Event</h4>
-            <div>
-              <Slider {...settings}>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">Thursday</div>
-                      <div className="date">1</div>
-                    </div>
-                    <div className="description">
-                      <h6 className="card-title">Career Fair</h6>
-                      <p className="card-text">6pm-9pm</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="card card-body bg-dark text-white mb-3">
-                  <div className="nextclass">
-                    <div className="calendar">
-                      <div className="day">Thursday</div>
-                      <div className="date">8</div>
-                    </div>
-                    <div className="description">
-                      <h6 className="card-title">Career Fair</h6>
-                      <p className="card-text">6pm-9pm</p>
-                    </div>
-                  </div>
-                </div>
-              </Slider>
-            </div>
-          </div>
-        </div>
       </div>
     );
 
@@ -304,7 +195,7 @@ class Landing extends Component {
                         onClick={this.toggleApp}
                         color="secondary"
                       >
-                        <i class="fas fa-th fa-lg" />
+                        <i className="fas fa-th fa-lg" />
                       </Button>
                       <Popover
                         placement="bottom"
@@ -317,9 +208,6 @@ class Landing extends Component {
                     </div>
                   </li>
                 </ul>
-                {/*<div class="navbar-brand">
-                  
-    </div>*/}
                 <img
                   className="rounded-circle"
                   src={logo}
@@ -354,7 +242,7 @@ class Landing extends Component {
                       />{" "}
                     </button>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item" id="upnext">
                     <div>
                       <Button
                         id="Popover2"
@@ -370,7 +258,9 @@ class Landing extends Component {
                         toggle={this.toggleUpNext}
                       >
                         <PopoverHeader>UpNext</PopoverHeader>
-                        <PopoverBody>{upNext}</PopoverBody>
+                        <PopoverBody>
+                          <UpNext />
+                        </PopoverBody>
                       </Popover>
                     </div>
                   </li>
@@ -379,159 +269,42 @@ class Landing extends Component {
             </div>
           </nav>
           <div className="container">
-            {/*<div className="col">
-                <img
-                  src={logo}
-                  style={{ width: "200px", margin: "auto", display: "block" }}
-                  alt="Loading..."
-                />
-    </div>*/}
             <h3>Welcome Ashutosh</h3>
-
             <div className="row">
-              {/*
-              <div className="col" id="left">
-                <h4>Up Next</h4>
-                <div>
-                  <h4>Class</h4>
-                  <div className="slider">
-                    <Slider {...settings}>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">Tuesday</div>
-                            <div className="date">1</div>
-                          </div>
-                          <div>
-                            <h5 className="card-title">
-                              Human Information Processing
-                            </h5>
-                            <p className="card-text">6pm-9pm</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">Tuesday</div>
-                            <div className="date">1</div>
-                          </div>
-                          <div>
-                            <h5 className="card-title">
-                              Human Information Processing
-                            </h5>
-                            <p className="card-text">6pm-9pm</p>
-                          </div>
-                        </div>
-                      </div>
-                    </Slider>
-                  </div>
-                </div>
-                <br />
-                <br />
-                <div>
-                  <h4>Assignment Due</h4>
-                  <div>
-                    <Slider {...settings}>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">November</div>
-                            <div className="date">9</div>
-                          </div>
-                          <div>
-                            <h5 className="card-title">Project Proposal</h5>
-                            <p className="card-text">5pm</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">November</div>
-                            <div className="date">16</div>
-                          </div>
-                          <div>
-                            <h5 className="card-title">Project Proposal</h5>
-                            <p className="card-text">5pm</p>
-                          </div>
-                        </div>
-                      </div>
-                    </Slider>
-                  </div>
-                </div>
-                <br />
-                <br />
-                <div>
-                  <h4>Event</h4>
-                  <div>
-                    <Slider {...settings}>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">Thursday</div>
-                            <div className="date">1</div>
-                          </div>
-                          <div className="description">
-                            <h5 className="card-title">Career Fair</h5>
-                            <p className="card-text">6pm-9pm</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card card-body bg-dark text-white mb-3">
-                        <div className="nextclass">
-                          <div className="calendar">
-                            <div className="day">Thursday</div>
-                            <div className="date">8</div>
-                          </div>
-                          <div className="description">
-                            <h5 className="card-title">Career Fair</h5>
-                            <p className="card-text">6pm-9pm</p>
-                          </div>
-                        </div>
-                      </div>
-                    </Slider>
-                  </div>
-                </div>
-            </div>*/}
-              <div className="col">
-                <div className="row">
-                  <div className="col" />
-                  <Row
-                    key={this.state.columns["column-2"].id}
-                    column={this.state.columns["column-2"]}
-                    apps={this.state.columns["column-2"].appIds.map(
-                      appId => this.state.apps[appId]
-                    )}
+              <div className="col" />
+              <Row
+                key={this.state.columns["column-2"].id}
+                column={this.state.columns["column-2"]}
+                apps={this.state.columns["column-2"].appIds.map(
+                  appId => this.state.apps[appId]
+                )}
+              />
+              <div className="col" />
+            </div>
+            <div className="row">
+              <div id="search">
+                <MuiThemeProvider>
+                  <SearchBar
+                    onChange={() => console.log("onChange")}
+                    onRequestSearch={() => console.log("onRequestSearch")}
+                    style={{
+                      margin: "0 auto",
+                      maxWidth: 800
+                    }}
                   />
-                  <div className="col" />
-                </div>
-                <div className="row">
-                  <div id="search">
-                    <MuiThemeProvider>
-                      <SearchBar
-                        onChange={() => console.log("onChange")}
-                        onRequestSearch={() => console.log("onRequestSearch")}
-                        style={{
-                          margin: "0 auto",
-                          maxWidth: 800
-                        }}
-                      />
-                    </MuiThemeProvider>
-                  </div>
-                </div>
-                <br />
-                <div>
-                  <img
-                    className="img-fluid"
-                    src={emergency}
-                    alt={emergency}
-                    style={{ width: "600px", marginRight: "5px" }}
-                  />{" "}
-                </div>
-                <br />
+                </MuiThemeProvider>
               </div>
             </div>
+            <br />
+            <div>
+              <img
+                className="img-fluid"
+                src={emergency}
+                alt={emergency}
+                style={{ width: "600px", marginRight: "5px" }}
+              />{" "}
+            </div>
+            <br />
           </div>
         </DragDropContext>
       </div>

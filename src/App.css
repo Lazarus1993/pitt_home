@@ -26,6 +26,9 @@
 h3 {
   text-align: center;
 }
+#apps {
+  text-align: center;
+}
 h4 {
   text-align: center;
 }
@@ -43,6 +46,9 @@ h4 {
 }
 .upnext {
   display: flex;
+}
+#upnext {
+  padding-top: 10px;
 }
 .card-text {
   margin-top: -10px;
@@ -69,6 +75,16 @@ h4 {
 }
 #Popover1 {
   background-color: #282c34;
+}
+#Popover2 {
+  background-color: #282c34;
+}
+
+.slick-dots {
+  margin-top: -100px;
+}
+.popover-body {
+  padding-bottom: 30px;
 }
 .calendar {
   background-color: white;

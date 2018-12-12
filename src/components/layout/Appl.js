@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+import Tooltip from "@material-ui/core/Tooltip";
+
 const Container = styled.div`
   border-radius: 2px;
   padding: 8px;
@@ -22,18 +24,20 @@ export default class Appl extends Component {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <img
-              //className="rounded-circle"
-              src={require("../../images/" + this.props.app.name + ".jpg")}
-              style={{
-                width: "50px",
-                margin: "auto",
-                display: "block",
-                borderRadius: "10px"
-              }}
-              alt="Loading..."
-            />
-            {this.props.app.name}
+            <Tooltip title={this.props.app.content} placement="top">
+              <img
+                //className="rounded-circle"
+                src={require("../../images/" + this.props.app.name + ".jpg")}
+                style={{
+                  width: "50px",
+                  margin: "auto",
+                  display: "block",
+                  borderRadius: "10px"
+                }}
+                alt="Loading..."
+              />
+            </Tooltip>
+            <div id="apps">{this.props.app.name}</div>
           </Container>
         )}
       </Draggable>

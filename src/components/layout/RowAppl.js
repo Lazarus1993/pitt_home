@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
+import Tooltip from "@material-ui/core/Tooltip";
+
 const Container = styled.div`
   padding: 8px;
   margin-right: 8px;
@@ -24,19 +26,23 @@ export default class Appl extends Component {
             isDragging={snapshot.isDragging}
           >
             <div>
-              <NotificationBadge count={5} effect={Effect.SCALE} />
-              <img
-                //className="rounded-circle"
-                src={require("../../images/" + this.props.app.name + ".jpg")}
-                style={{
-                  width: "50px",
-                  margin: "auto",
-                  display: "block",
-                  borderRadius: "10px"
-                }}
-                alt="Loading..."
+              <NotificationBadge
+                count={this.props.app.count}
+                effect={Effect.SCALE}
               />
-
+              <Tooltip title={this.props.app.content} placement="top">
+                <img
+                  //className="rounded-circle"
+                  src={require("../../images/" + this.props.app.name + ".jpg")}
+                  style={{
+                    width: "50px",
+                    margin: "auto",
+                    display: "block",
+                    borderRadius: "10px"
+                  }}
+                  alt="Loading..."
+                />
+              </Tooltip>
               {this.props.app.name}
             </div>
           </Container>

@@ -3,17 +3,20 @@ const initialData = {
     "apps-1": {
       id: "apps-1",
       name: "Email",
-      content: "Access Pitt email through Outlook "
+      content: "Access Pitt email through Outlook ",
+      count: 10
     },
     "apps-2": {
       id: "apps-2",
       name: "Library",
-      content: "One stop place for books and research papers"
+      content: "One stop place for books and research papers",
+      count: 1
     },
     "apps-3": {
       id: "apps-3",
       name: "Courseweb",
-      content: "Log in to Pitt's web-based learning management system"
+      content: "Log in to Pitt's web-based learning management system",
+      count: 5
     },
     "apps-4": {
       id: "apps-4",
@@ -38,42 +41,45 @@ const initialData = {
     "apps-8": {
       id: "apps-8",
       name: "PeopleSoft",
-      content: "Portal to find on campus jobs"
+      content: "Access Student Information System tasks from your mobile device"
     },
     "apps-9": {
       id: "apps-9",
       name: "PittPay",
-      content: "Portal to find on campus jobs"
+      content: "Access online eBills and payments"
     },
     "apps-10": {
       id: "apps-10",
       name: "Office365",
-      content: "Portal to find on campus jobs"
+      content:
+        "Use a suite of powerful online collaboration tools from any device"
     },
     "apps-11": {
       id: "apps-11",
       name: "Handshake",
-      content: "Portal to find on campus jobs"
+      content: "View job listings, internships, career fairs, and more"
     },
     "apps-12": {
       id: "apps-12",
       name: "Box",
-      content: "Portal to find on campus jobs"
+      content: "Access unlimited cloud storage and online collaboration tools"
     },
     "apps-13": {
       id: "apps-13",
       name: "Skype",
-      content: "Portal to find on campus jobs"
+      content:
+        "Collaborate with contacts via video, web conference, IM, and more"
     },
     "apps-14": {
       id: "apps-14",
       name: "Softwares",
-      content: "Portal to find on campus jobs"
+      content: "Download a wide variety of great software at no cost"
     },
     "apps-15": {
       id: "apps-15",
       name: "ENS",
-      content: "Portal to find on campus jobs"
+      content:
+        "Register to receive critical information in the event of an emergency"
     }
   },
   column: {
